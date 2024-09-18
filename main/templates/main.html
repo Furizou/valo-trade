@@ -1,17 +1,46 @@
-<html>
-    <head>
-        <title>{{ app_name }}</title>
-    </head>
+{% extends 'base.html' %}
+{% block content %}
 
-    <body>
-        <h1>Valorant Trade</h1>
+<h1>{{ app_name }}</h1>
 
-        <h2>Logged in user:</h2>
-        <h3>Name:</h3>
-        <p>{{ name }}</p>
-        <h3>Class:</h3>
-        <p>{{ class }}</p>
-        <h3>Username:</h3>
-        <p>{{ username }}</p> 
-    </body>
-</html>
+<h2>Logged in user:</h2>
+
+<h3>Name:</h3>
+<p>{{ name }}</p>
+
+<h3>Class:</h3>
+<p>{{ class }}</p>
+
+<h3>Username:</h3>
+<p>{{ username }}</p> 
+
+
+{% if not products %}
+<p>Belum ada Product pada Valorant Trade.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Account Name</th>
+    <th>Price</th>
+    <th>Description</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data Product di bawah baris ini 
+  {% endcomment %} 
+  {% for product in products %}
+  <tr>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+  <button>Add New Product</button>
+</a>
+
+{% endblock content %}
