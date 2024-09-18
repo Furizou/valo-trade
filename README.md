@@ -105,7 +105,7 @@ Django models are called Object-Relationa Mapping (ORM) since they allow develop
 3. **XML by ID**
 ![XML by ID Request](https://github.com/user-attachments/assets/92592fa1-d335-4cfd-8ea3-df9602a186cb)
 4. **JSON by ID**
-![JSON by ID Request](https://github.com/user-attachments/assets/6df194d3-b29a-4b42-9cd2-2619af2c8eff")
+![JSON by ID Request](https://github.com/user-attachments/assets/1021421b-0c50-4819-9201-5194782c1993")
 
 # Contributing
 Pull requests are welcome. For major changes or bug reports, especially from `asdos` or `friends`, please open an issue first
