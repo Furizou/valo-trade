@@ -78,6 +78,35 @@ Django is considered beginner-friendly because it simplifies web development by 
 ### ORM in Django
 Django models are called Object-Relationa Mapping (ORM) since they allow developers interact with databases without writing SQL, using python. This happens because ORM automatically translate Python code into SQL, making the database management easier for beginner and more intuitive.
 
+## Changelog Tugas 3
+### FAQ
+1. **Why do we need data delivery in implementing a platform?** Data delivery allows the smooth theraction between frontend and backend. It's possible because it enables applications to process user inputs, exchange information between systems, and display contents dynamically. XML and JSON are some of the most commonly used formats for data delivery due to their simplicity and readability.
+
+2. **Which is better: XML or JSON? Why is JSON more popular?** Most of the time, JSON is considered better for modern applications due to its lightweight nature and easier parsing method. Compared to XML which uses tags that may increase data size, JSON also has a simpler syntax. The format of JSON that closely resembles how data is represented in `JavaScript` also making it a popular choice among web and mobile development.
+
+3. **The use of is_valid() method in Django forms.** The method `is_valid` is used to check if the data submitted through the form fit the form's field specified rules. This rules include checking required fields, field types, and other validation such as min/max values. `is_valid` became a essential process to check since it ensures that only valid data is processed and saved to the database, preventing data corruption and errors.
+
+4. **Why do we need a csrf_token in Django forms?** The `csrf_token` is important to prevent Cross-Site Request Forgery (CSRF) attacks. The attack involes tricking the users into making unauthorized or unintended request that endanger their data within the application. Adding `csrf_token` ensures that the form request is coming from trusted source, which is authenticated user, not from outside attacker.
+
+### Implementation Steps
+1. **Set up the project skeleton.** To ensure the layout consistency across all views, a `base.html` template should be created.
+
+2. **Create Django form and views.** A `ModelForm` should be created to handle form creation automatically based on the model fields. `ModelForm` reduces the need to manually define each input field in HTML code. Then, Django views is created to handle data inputs and render the forms.
+
+3. **Handling Data Subimssion.** The data submitted by the form should be validated by `is_valid()` method, ensuring no corrupt data enters the database. CSRF protectionn should also be added, ensuring safe form submission from CSRF attack.
+
+4. **Searilize data for APIs.** Using `serializers` to convert the query data from databse into a more readable format like XML and JSON. This enable the platform to serve data as an API.
+
+### Postman Requests
+1. **XML**
+![XML Request](https://github.com/user-attachments/assets/4637eec1-26c3-44c0-8176-093fc99beb48)
+2. **JSON**
+![JSON Request](https://github.com/user-attachments/assets/6df194d3-b29a-4b42-9cd2-2619af2c8eff)
+3. **XML by ID**
+![XML by ID Request](https://github.com/user-attachments/assets/92592fa1-d335-4cfd-8ea3-df9602a186cb)
+4. **JSON by ID**
+![JSON by ID Request](https://github.com/user-attachments/assets/6df194d3-b29a-4b42-9cd2-2619af2c8eff")
+
 # Contributing
 Pull requests are welcome. For major changes or bug reports, especially from `asdos` or `friends`, please open an issue first
 to discuss what you would like to change. Cheers -Kukuh
