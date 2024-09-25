@@ -107,6 +107,24 @@ Django models are called Object-Relationa Mapping (ORM) since they allow develop
 4. **JSON by ID**
 ![JSON by ID Request](https://github.com/user-attachments/assets/1021421b-0c50-4819-9201-5194782c1993)
 
+## Changelog Tugas 4
+### FAQ
+1. **What's the difference between HttpResponseRedirect() and redirect?** `HttpResponseRedirect()` is a class in Django that used to explicitly send HTTP respond with a status code of `302`, indicating the website to directing the website indo a new URL. The weakness `HttpResponseRedirect()` is that the URL has to be provided manually, making it inpractice in managing many URLs. On the other hand, `redirect()` enable the user to pass not only URL, but also `View Names`, `Model Objects`, and `URL resolvers` which is defined by the function reverse().
+
+2. **How's the connection between the Product model and the User working?** In this context, `User` may create multiple `Product` entries. By applying database modelling, we may connect `Product` and `User` by using Django `ForeignKey`, making each instance of `Product` connected exactly one `User`. Thus, inside the `Product` class, there should be a variable `user` assigned with `models.ForeignKey()`.
+
+3. **What is the difference between authentication and authorization, and what happens when a user logs in?** 
+    * **Difference between authentication and authorization**: `Authentication` is a process to verify a User identity. The authentication process usually involve checking credential informations such as username and password. On the other hand, `Authorization` define the which resources of the platform the User is allowed to access.
+
+    * **What Happend When the User Logged In?** Django use `AuthenticationForm` to capture the login credentials which the user send using POST request. The credentials is then being verified using `authenticate()` function, to which if the credentils is valid, a Django `session ID` is created using the function `login()`. This session is also stored in cookies, enabling the website to maintain login status of the user. In the last step, the function `redirect()` is called to direct the user back to the main page.
+
+4. **How does Django remember logged-in users? Wha's the use of cookies and do all cookies are safe to use?** When a User logged in, Django create a session which store `session ID` to the server and also send it to the user's browser in a form of `cookie`. By using this cookie, every time User send a request to the server, the `session ID` will be used to identify the User instead of giving the credentials all the time. Besides storing session ID, cookies may also store `csrftoken` which is used to prevent the Cross-Site Request Forgery (CSRF) attack. It has to be noted that not all cookies are safe. A cookies which store sensitive information such as login informations have to be `encrypted` so that it can only be accessed by server.
+
+### Implementation Steps
+1. **Implementing the Register, Login, and Logout functions.** A register form is created by importing `UserCreationForm` class. Then, a login form may be created by using `AuthenticationForm`. Lastly, logout button can be simply created by deleting the current session.
+2. **Connecting Product model with User.** In the model `Product`, a ForeignKey is added to the model of `User` so that each product entry has a relation to the user who created it.
+3. **Showing LoggedIn User Informations.** `last_login` varibale which is taken from the cookies is added to the `main.html`. By doing so and adding other information, the current logged in user and its last login time can be displayed in the website.
+ 
 # Contributing
 Pull requests are welcome. For major changes or bug reports, especially from `asdos` or `friends`, please open an issue first
 to discuss what you would like to change. Cheers -Kukuh
