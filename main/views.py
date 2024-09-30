@@ -41,6 +41,30 @@ def create_product(request):
     context = {'form': form}
     return render(request, "create_product.html", context)
 
+def edit_product(request, id):
+    # Get product based on id
+    product = Product.objects.get(pk=id)
+    
+    # Set product as the instance of form
+    form = ProductForm(request.POST or None, instance=product)
+    
+    if form.is_valid() and request.method == "POST":
+        # Save form & go back to home page (main)
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    
+    context = {'form': form}
+    return render(request, 'edit_product.html', context)
+
+def delete_product(request, id):
+    # Get product based on id
+    product = Product.objects.get(pk = id)
+    
+    # Detelete the product
+    product.delete()
+    
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
