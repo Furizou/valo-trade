@@ -1,66 +1,72 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Valorant Trade</title>
+{% endblock meta %}
+
 {% block content %}
 {% include 'navbar.html' %}
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+  
+  <!-- This is the user logged-in status -->  
+  <div class="flex justify-between items-center mx-8 px-8 py-4 bg-gray-900 shadow-xl rounded-lg">
+    <!-- These are nama and npm -->
+    <div class="flex flex-col relative w-32 px-2 border-r-2 border-gray-500">
+      <h3 class="text-left text-xl font-dinnext-heavy text-white uppercase">
+        {{ name }}
+      </h3>
+      <h4 class="flex text-left font-dinnext-bold text-gray-100">{{ npm }}</h4>
+    </div>
 
-<h1>{{ app_name }}</h1>
+    <!-- Class Name -->
+    <div class="flex items-center px-8">
+      <h3 class="text-left text-lg font-dinnext-heavy text-white">{{ class }}</h3>
+    </div>
 
-<h2>Logged in user:</h2>
+    <!-- Last Login, aligned to the far right -->
+    <div class="flex ml-auto items-center bg-white px-8 h-8 rounded-lg">
+      <h3 class="text-gray-900 text-right">Last Login: {{ last_login }}</h3>
+    </div>
 
-<h3>Name:</h3>
-<p>{{ name }}</p>
+  </div>
 
-<h3>Class:</h3>
-<p>{{ class }}</p>
+  <div class="flex justify-end mb-6">
+    <a href="{% url 'main:create_product' %}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mx-8 mt-5 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-103">
+        Add New Product
+    </a>
+  </div>
 
-<h3>Username:</h3>
-<p>{{ username }}</p> 
+  {% if not products %}
+  <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+      <img id="randomErrorImage" alt="Stupid Agents" class="w-32 h-32 mb-4"/>
+      <p class="text-center text-gray-600 mt-4">Tidak ada akun valorant yang tersedia di Valorant Trade saat ini</p>
+  </div>
+  {% else %}
+  <!-- <div class="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-6 w-full max-w-[calc(100%-4rem)] mx-auto my-8"> -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[calc(100%-4rem)] mx-auto my-8">
+    {% for product in products %}
+        {% include 'card_product.html' with product=product %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<script>
+  // Array of image URLs
+  const images = [
+    "{% static 'images/error_face/breach.png' %}",
+    "{% static 'images/error_face/gekko.png' %}",
+    "{% static 'images/error_face/killjoy.png' %}",
+    "{% static 'images/error_face/phoenix.png' %}",
+    "{% static 'images/error_face/sova.png' %}"
+  ];
 
-{% if not products %}
-<p>Belum ada Product pada Valorant Trade.</p>
-{% else %}
-<table>
-  <tr>
-    <th>Account Name</th>
-    <th>Price</th>
-    <th>Description</th>
-  </tr>
+  // Select a random image
+  const randomImage = images[Math.floor(Math.random() * images.length)];
 
-  {% comment %} Berikut cara memperlihatkan data Product di bawah baris ini 
-  {% endcomment %} 
-  {% for product in products %}
-  <tr>
-    <td>{{product.name}}</td>
-    <td>{{product.price}}</td>
-    <td>{{product.description}}</td>
-    <td>
-      <a href="{% url 'main:edit_product' product.pk %}">
-          <button>
-              Edit
-          </button>
-      </a>
-    </td>
-    <td>
-      <a href="{% url 'main:delete_product' product.pk %}">
-          <button>
-              Delete
-          </button>
-      </a>
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
-
-<br />
-
-<a href="{% url 'main:create_product' %}">
-  <button>Add New Product</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
+  // Set the random image as the source of the image element
+  document.getElementById('randomErrorImage').src = randomImage;
+</script>
 
 {% endblock content %}

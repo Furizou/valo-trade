@@ -20,6 +20,7 @@ def show_main(request):
     context = {
         'app_name' : 'Valorant Trade',
         'name': request.user.username,
+        'npm' : '2306228390',
         'class': 'PBP F',
         'username': 'Furizou#9999',
         'products': products,
