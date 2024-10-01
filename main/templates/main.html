@@ -10,30 +10,34 @@
 <div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
   
   <!-- This is the user logged-in status -->  
-  <div class="flex justify-between items-center mx-8 px-8 py-4 bg-gray-900 shadow-xl rounded-lg">
+  <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center mx-8 px-8 py-4 bg-gray-900 shadow-xl rounded-lg">
+    
     <!-- These are nama and npm -->
-    <div class="flex flex-col relative w-32 px-2 border-r-2 border-gray-500">
-      <h3 class="text-left text-xl font-dinnext-heavy text-white uppercase">
-        {{ name }}
-      </h3>
-      <h4 class="flex text-left font-dinnext-bold text-gray-100">{{ npm }}</h4>
-    </div>
+    <div class="flex flex-row items-center sm:w-auto px-2 border-gray-500">
 
-    <!-- Class Name -->
-    <div class="flex items-center px-8">
-      <h3 class="text-left text-lg font-dinnext-heavy text-white">{{ class }}</h3>
+      <div class="flex flex-col pr-8 border-r-2 sm:pr-4">
+        <h3 class="text-left text-lg sm:text-xl font-dinnext-heavy text-white uppercase">
+          {{ name }}
+        </h3>
+        <h4 class="flex text-left font-dinnext-bold text-gray-100">{{ npm }}</h4>
+      </div>
+
+      <!-- Class Name -->
+      <div class="flex items-center sm:ml-4 pl-4">
+        <h3 class="text-left text-lg font-dinnext-heavy text-white">{{ class }}</h3>
+      </div>
     </div>
 
     <!-- Last Login, aligned to the far right -->
-    <div class="flex ml-auto items-center bg-white px-8 h-8 rounded-lg">
-      <h3 class="text-gray-900 text-right">Last Login: {{ last_login }}</h3>
-    </div>
+    <div class="flex mt-4 sm:mt-0 sm:ml-auto items-center bg-white px-4 sm:px-8 h-8 rounded-lg">
+      <h3 class="text-gray-900 text-center text-sm sm:text-base whitespace-nowrap">Last Login: {{ last_login }}</h3>
+    </div>    
 
   </div>
 
   <div class="flex justify-end mb-6">
     <a href="{% url 'main:create_product' %}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mx-8 mt-5 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-103">
-        Add New Product
+      Add New Product
     </a>
   </div>
 
