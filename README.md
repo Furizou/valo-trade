@@ -125,6 +125,30 @@ Django models are called Object-Relationa Mapping (ORM) since they allow develop
 2. **Connecting Product model with User.** In the model `Product`, a ForeignKey is added to the model of `User` so that each product entry has a relation to the user who created it.
 3. **Showing LoggedIn User Informations.** `last_login` varibale which is taken from the cookies is added to the `main.html`. By doing so and adding other information, the current logged in user and its last login time can be displayed in the website.
  
+## Changelog Tugas 5
+### FAQ
+1. **What is the priority order of multiple CSS selector?** If multiple `CSS selector` is applied to a certain HTML element, the CSS would prioritize the selector from its specification. These are the priority:
+    * **Inline styles**: Style which are written direcly in the HTML element would have the highest priority. This includes using inine CSS with `Tailwind` classes.
+    * **ID selectors**: Id selector has to be unique because each HTML element may only has  one `Id`, and each `Id` may only be applied to one element.
+    * **Class selectors**: This selector targets HTML element using its class attribute. Unlike id selectors, class selectors can be used multiple times on many elements.
+    * **Element selectors**: This selector targets HTML element using its element tag (i.e. `<p></p>`, `<div></div>`, and `<h1></h1>`).
+
+2. **Why is responsive web design important?** The devices used to access website such as desktop, tablet, and smartphone wont have the same screen size. Implementing responsive web design is necessary to ensure a good `user experience` and across this different platforms. Responsive web design includes automatic layout adjustment, hiding collapsing elements, and others. By doing so, user may have the best experience thus increasing the rank of the website in the SEO.
+
+3. **What is the difference between margin, border, and padding?** In CSS, margin, border, and padding is a part of `box model` which control the layout of a web design. Each of this component has its own function to arrange the space around the elements.
+    * **Margin**: An empty space around the element which seperate the element with its surrounding. Margin doesnt have color or any other visual properties.
+    * **Border**: A line which surround the element and located between padding and margin. Border may have color, stroke size, and styles (i.e. solid, dashed, or dotted). Border may give a clear visual boundary between the element and its surrounding.
+    * **Padding**: A space inside the element, located between content and border. Padding make sure that a content wont stick directly to its border. Like margin, padding doesnt have color or any other visual properties.<br>
+    ![Margin, Border, and Padding](https://pbp-fasilkom-ui.github.io/ganjil-2025/assets/images/4-box-model-css-d7407834664811d27fcb23a759fbed5f.png)
+
+4. **What does the flex box and grid layout do?** Flexbox and Grid layout are two fo CSS layouting system which designed to assits developer to arrange element flexibly and efficiently. `Flexbox (Flexible Box)` function as a way to arrange element in `one dimention` each time, horizontally or verticaly. Flexbox is ideal to arrange elements which have to be distributed in a direction such as navbar or arranging horizontal box with consistent space between the elements. `Grid Layout` in the other hand enables the user to arrange elements in `two dimention` simultaneously. For example, a columns and rows may be defined to arrange how much elements can fit into a grid.
+
+### Implementation Steps
+1. **Configuring Static Files.** The code setting in `settings.py` has to be adjusted so that the project may access static files such as CSS, images, and fonts.
+2. **Setting up Tailwind.** The CDN tailwind `<script src="https://cdn.tailwindcss.com"></script>` is added to the `base.html` file so that every page may access it.
+3. **Page Styling.** Tailwind CSS is used to style the web design, including login, register, and main page. Responsive web design has also to be accounted, making sure each design fits perfectly with any screen size. This is done by setting up specific screen size settings using syntax like `sm:` or `md:`.
+4. **Testing.** After completing the CSS styling, everything is feature is being check with every screen size and platforms so that it makes sure the design quality and responsiveness of the website project.
+
 # Contributing
 Pull requests are welcome. For major changes or bug reports, especially from `asdos` or `friends`, please open an issue first
 to discuss what you would like to change. Cheers -Kukuh
