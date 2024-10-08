@@ -149,6 +149,23 @@ Django models are called Object-Relationa Mapping (ORM) since they allow develop
 3. **Page Styling.** Tailwind CSS is used to style the web design, including login, register, and main page. Responsive web design has also to be accounted, making sure each design fits perfectly with any screen size. This is done by setting up specific screen size settings using syntax like `sm:` or `md:`.
 4. **Testing.** After completing the CSS styling, everything is feature is being check with every screen size and platforms so that it makes sure the design quality and responsiveness of the website project.
 
+## Changelog Tugas 6
+### FAQ
+1. **What is the purpose of using JavaScript in Web Development?** In short, `JavaScript` is one of the main technologies used in web development which allows dynamic web page manipulation and improves user interaction. JavaScript allows developer to do form validation, asynchronous web design (modifying page elements without reloading the whole page using tools such as AJAX), and handle various events such as `onClick()`, `onHover()`, and many more.
+
+2. **What is the use of `await` when using `fetch()` function?** When using `fetch()`, `await` is used to make the code wait for the HTTP request done by `fetch()` sends responses/done. If `await` is not provided, `JavaScript` is going to continue the code execution to the next lines which may creates error if the data isn't ready or still undifined because the request is still on progress.
+
+3. **Why the decorator `@csrf_exempt` is needed on the view with AJAX `POST`?** As explained in previous changelog, Django uses CSRF token to defends its system from malicious attack from POST request. In the context of AJAX POST request, it's often that the CSRF token isn't provided automatically. Because of that, the `@csrf_exempt` decorator is used to deactivate the CSRF check in the said AJAX view. By doing so, failed POST request by AJAX with the reason of missing CSRF token may be avoided.
+
+4. **Why does the data input cleaning is done in backend, not frontend?** A `backend` validation and data cleaning is crucial to prevent cyberattack such as Cross-Site-Scripting (XSS). A frontend validation may be easily being avoided by the attackers by turning off JavaScript or even manipulating request before sending it to the server.
+
+### Implementation Steps
+1. **Configure product entry with AJAX.** Create a function in `views.py` to recieve POST request, followed by creating form and modal in the frontend in the `main.html` to send data asynchronously using `fetch()`. Then, the data received is processed in the backed and stored in the database.
+
+2. **Refresh data dynamically.** Each time the product is added, data is being refresh automatically without the need to reload the page. This is done using JavaScript function which calls the data from `backend` and process it to the `frontend` by modifying the html code using element id tag.
+
+3. **Data input Cleaning.** Before storing the form data into database, data cleaning using `strip_tags()` to prevent the potential XSS attack.
+
 # Contributing
 Pull requests are welcome. For major changes or bug reports, especially from `asdos` or `friends`, please open an issue first
 to discuss what you would like to change. Cheers -Kukuh
